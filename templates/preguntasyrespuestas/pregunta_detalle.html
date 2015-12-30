@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+{% block title %}Detalle pregunta{%endblock%}
+{% block content%}
+	<h2>{{pregunta.asunto}}?</h2>
+		<p>
+			<b>Publicado:</b> {{pregunta.fecha_publicacion|date:"D, d/m/y"}}
+		</p>
+		<p>
+			Descripcion
+		</p>
+		<h3>Respuestas</h3>
+		<ul>
+			{% for respuestas in pregunta.respuesta_set.all %}
+				<li>{{respuesta.contenido|safe}}</li>
+			{% empty %}
+				<li>Aun no hay respuestas</li>
+			{% endfor %}
+		</ul>
+{%endblock%}
+
+
